@@ -73,6 +73,8 @@ public:
                                                           bool do_formatting = true) const PURE;
 };
 
+class CorsPolicy;
+
 /**
  * A routing primitive that specifies a direct (non-proxied) HTTP response.
  */
@@ -115,6 +117,11 @@ public:
    * @return std::string& the name of the route.
    */
   virtual const std::string& routeName() const PURE;
+
+  /**
+   * @return const CorsPolicy* the CORS policy for this virtual host.
+   */
+  virtual const CorsPolicy* corsPolicy() const PURE;
 };
 
 /**

@@ -84,6 +84,21 @@ virtual_hosts:
         allow_origin_string_match:
         - exact: test-origin-1
         expose_headers: "custom-header-1,custom-header-2"
+  - match:
+      prefix: "/cors-direct"
+    direct_response:
+      status: 200
+      
+    typed_per_filter_config:
+      envoy.filters.http.cors:
+        "@type": type.googleapis.com/envoy.extensions.filters.http.cors.v3.CorsPolicy
+        allow_origin_string_match:
+        - exact: test-origin-1
+        - exact: test-host-2
+        allow_headers: content-type
+        allow_methods: POST
+        max_age: "100"
+
 )EOF";
 
 struct TestParam {
@@ -201,6 +216,12 @@ public:
             auto* cors = route->mutable_route()->mutable_cors();
             cors->add_allow_origin_string_match()->set_exact("test-origin-1");
             cors->set_expose_headers("custom-header-1,custom-header-2");
+          }
+          {
+            auto* route = virtual_host->add_routes();
+            route->mutable_match()->set_prefix("/cors-direct");
+            auto* dr = route->mutable_direct_response();
+            dr->set_status(202);
           }
         });
     HttpIntegrationTest::initialize();
@@ -381,6 +402,23 @@ TEST_P(CorsFilterIntegrationTest, TestExposeHeaders) {
           {"server", "envoy"},
           {"content-length", "0"},
           {":status", "200"},
+      });
+}
+TEST_P(CorsFilterIntegrationTest, TestDirectResponseHeaders) {
+  testNormalRequest(
+      Http::TestRequestHeaderMapImpl{
+          {":method", "GET"},
+          {":path", "/cors-direct/test"},
+          {":scheme", "http"},
+          {":authority", "test-host"},
+          {"origin", "test-origin-1"},
+      },
+      Http::TestResponseHeaderMapImpl{
+          {"access-control-allow-origin", "test-origin-1"},
+          {"access-control-expose-headers", "custom-header-1,custom-header-2"},
+          {"server", "envoy"},
+          {"content-length", "0"},
+          {":status", "202"},
       });
 }
 

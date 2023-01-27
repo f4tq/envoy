@@ -59,6 +59,7 @@ public:
   MOCK_METHOD(Http::Code, responseCode, (), (const));
   MOCK_METHOD(const std::string&, responseBody, (), (const));
   MOCK_METHOD(const std::string&, routeName, (), (const));
+  MOCK_METHOD(const CorsPolicy*, corsPolicy, (), (const));
 };
 
 class TestCorsPolicy : public CorsPolicy {
