@@ -16,3 +16,6 @@ echo "build ${BAZEL_BUILD_EXTRA_OPTIONS}" | tee -a ~/.bazelrc
 #echo "build --symlink_prefix=/" >> ~/.bazelrc
 
 [[ -n "${BUILD_DIR}" ]] && sudo chown -R "$(id -u):$(id -g)" "${BUILD_DIR}"
+
+# bazel run @go_sdk//:bin/go -- env
+
