@@ -1,6 +1,7 @@
 {
   "name": "Envoy Dev",
-  "dockerFile": "Dockerfile",
+  # "dockerFile": "Dockerfile",
+  "image": "f4tq/envoy-build:c9eabcc",
   "runArgs": [
     "--user=vscode",
     "--cap-add=SYS_PTRACE",
