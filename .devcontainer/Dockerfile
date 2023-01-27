@@ -17,6 +17,10 @@ RUN apt-get -y update \
   && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
   && chmod 0440 /etc/sudoers.d/$USERNAME
 
+RUN (wget -O- https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz | (cd /usr/local &&  sudo tar xzf - )) && \
+   ln -s /usr/local/go/bin/go /usr/local/bin/go && \
+   ln -s /usr/local/go/bin/gofmt /usr/local/bin/gofmt
+
 ENV DEBIAN_FRONTEND=
 ENV PATH=/opt/llvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 

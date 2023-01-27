@@ -17,5 +17,11 @@ echo "build ${BAZEL_BUILD_EXTRA_OPTIONS}" | tee -a ~/.bazelrc
 
 [[ -n "${BUILD_DIR}" ]] && sudo chown -R "$(id -u):$(id -g)" "${BUILD_DIR}"
 
-# bazel run @go_sdk//:bin/go -- env
+#bazel run @go_sdk//:bin/go -- env
 
+#sudo apt-get update -y && apt-get install --no-install-recommends -y tree less
+
+# match up installed  
+#wget -O- https://go.dev/dl/go1.18.linux-amd64.tar.gz | (cd /usr/local &&  sudo tar xzf - )
+#sudo ln -s /usr/local/go/bin/go /usr/local/bin/go
+#sudo ln -s /usr/local/go/bin/gofmt /usr/local/bin/gofmt
