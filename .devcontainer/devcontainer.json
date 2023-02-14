@@ -1,6 +1,6 @@
 {
   "name": "Envoy Dev",
-  # "dockerFile": "Dockerfile",
+  // "dockerFile": "Dockerfile",
   "image": "f4tq/envoy-build:c9eabcc",
   "runArgs": [
     "--user=vscode",
@@ -16,6 +16,8 @@
   ],
   "containerEnv": {
     "ENVOY_SRCDIR": "${containerWorkspaceFolder}",
+    "GOPATH": "/build/go",
+    "GOMODCACHE": "/build/go/pkg/mod"
   },
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",

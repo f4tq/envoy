@@ -160,3 +160,73 @@ top
 git status
 git checkout contrib/golang/filters/http/test/test_data/passthrough/go.*
 rm -rf contrib/golang/filters/http/test/test_data/passthrough/modcache/
+env | grep HIST
+go version
+bash -x tools/vscode/refresh_compdb.sh
+bazel test -c dbg  //test/extensions/filters/http/cors:cors_filter_integration_test
+ls -l .vscode/
+cd contrib/golang/filters/http/
+ls
+cd test/test_data/passthrough/
+env | grep GOPATH
+export GOPATH=/build/go
+export GOMODCACHE=/build/go/pkg/mod
+go mod download
+go mod tidy
+ls -l /build/go/
+ls -l /build/go/pkg/
+ls -l /build/go/pkg/mod/
+ls -l /build/go/pkg/mod/github.com/
+ls -l /build/go/pkg/mod/github.com/envoyproxy/envoy/contrib/golang/filters/http/source/go\@v0.0.0-20230127
+ls -l /build/go/pkg/mod/github.com/envoyproxy/envoy/contrib/golang/filters/http/source
+ls -l /build/go/pkg/mod/github.com/envoyproxy/envoy/contrib/golang/filters/http/source/go\@v0.0.0-20230127005956-c47653980e0a/
+vim go.mod 
+pwd
+ls -l ../../../source/
+ls -l ../../../source/go/
+cat ../../../source/go/go.mod 
+vim go.mod 
+ls ../../../source/go
+fg
+git diff go.mod 
+vim go.mod 
+go mod verify
+bazel run @go_sdk//:bin/go -- mod verify
+git checkout go.mod
+bazel run @go_sdk//:bin/go -- mod verify
+bazel run @go_sdk//:bin/go -- env
+envoy --help
+git branch
+git remote -v
+git fetch origin 
+git rebase -i origin/main
+git status
+git diff
+git status
+git diff
+git status
+history
+man git-stash
+git status
+git diff .devcontainer/
+git status
+git status | grep modified: | awk '{print $1}' | grep -v \.bazelrc
+git status | grep modified: | awk '{print $2}' | grep -v \.bazelrc
+git status | grep modified: | awk '{print $2}' | grep -v -e \.bazelrc -e \.devcontainer
+git status | grep modified: | awk '{print $2}' | grep -v -e \.bazelrc -e \.devcontainer | xargs git add
+git status
+git add 0001-Add-Filter1XXHeaderStatus.-24080.patch 002-stats-Stats-remove-operator-scope-hack-phase-2-see-2.patch contrib/golang/filters/http/test/golang_cors_integration_test.cc  contrib/golang/filters/http/test/test_data/cors/
+git add 0001-Add-Filter1XXHeaderStatus.-24080.0patch 002-stats-Stats-remove-operator-scope-hack-phase-2-see-2.patch contrib/golang/filters/http/test/golang_cors_integration_test.cc  contrib/golang/filters/http/test/test_data/cors/
+git add 0001-Add-Filter1XXHeaderStatus.-24080.patch 0002-stats-Stats-remove-operator-scope-hack-phase-2-see-2.patch contrib/golang/filters/http/test/golang_cors_integration_test.cc  contrib/golang/filters/http/test/test_data/cors/
+git commit -m wip
+git config --global user.email 'fortescu@adobe.com'
+git config --global user.name "Chris Fortescue'
+git config --global user.name "Chris Fortescue"
+git status
+git commit -m wip
+git status
+git checkout my-main
+wc -l .devcontainer/.bash_history 
+history | wc -l
+pwd
+history -w
